@@ -66,7 +66,6 @@ BOOL ascending = YES;
     UIBarButtonItem *doneButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(doneTouched:)];
     UIBarButtonItem *cancelButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:self action:@selector(cancelTouched:)];
     
-    // the middle button is to make the Done button align to right
     [toolBar setItems:[NSArray arrayWithObjects:cancelButton, [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil], doneButton, nil]];
     self.pickerTextField.inputAccessoryView = toolBar;
     
@@ -157,13 +156,6 @@ BOOL ascending = YES;
 
 
 }
-    
-   
-    
-  //  self.NoBedrooms.text = [bedroomPicker objectAtIndex:row];
-
-    
-    // perform some action
 
 
 -(void)viewDidAppear:(BOOL)animated{
@@ -263,7 +255,6 @@ BOOL ascending = YES;
     [self.tableView reloadData];
     
     
-  //  NSLog(@"%@", movies);
     
 }
 
@@ -292,6 +283,12 @@ BOOL ascending = YES;
     cell.movieTitle.text = [[movies objectAtIndex:indexPath.row] objectForKey: @"title"];
 
    cell.movieImage.image = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:[[movies objectAtIndex:indexPath.row] objectForKey:@"url"]]]];
+    
+    
+    cell.movieImage.layer.borderWidth = 2;
+    cell.movieImage.layer.borderColor = [UIColor lightGrayColor].CGColor;
+    cell.movieImage.layer.cornerRadius = cell.movieImage.frame.size.width/2;
+    cell.movieImage.layer.masksToBounds = YES;
     
     return cell;
 }
