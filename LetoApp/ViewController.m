@@ -9,13 +9,22 @@
 #import "ViewController.h"
 
 @interface ViewController ()
+@property (strong, nonatomic) IBOutlet UITableView *tableView;
+
 
 @end
+NSMutableArray *movies;
+NSMutableDictionary *items;
+NSXMLParser *RSSParse;
+NSString *currentElement;
+NSMutableString *movieTitle, *imgUrl;
 
 @implementation ViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    
     // Do any additional setup after loading the view, typically from a nib.
 }
 

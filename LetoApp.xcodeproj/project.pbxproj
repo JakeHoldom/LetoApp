@@ -15,6 +15,7 @@
 		1AF8AD151BA859B7007CA012 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1AF8AD141BA859B7007CA012 /* Images.xcassets */; };
 		1AF8AD181BA859B7007CA012 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1AF8AD161BA859B7007CA012 /* LaunchScreen.xib */; };
 		1AF8AD241BA859B7007CA012 /* LetoAppTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 1AF8AD231BA859B7007CA012 /* LetoAppTests.m */; };
+		1AF8AD2F1BA85B1E007CA012 /* CustomTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1AF8AD2E1BA85B1E007CA012 /* CustomTableViewCell.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -42,6 +43,8 @@
 		1AF8AD1D1BA859B7007CA012 /* LetoAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LetoAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		1AF8AD221BA859B7007CA012 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1AF8AD231BA859B7007CA012 /* LetoAppTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LetoAppTests.m; sourceTree = "<group>"; };
+		1AF8AD2D1BA85B1E007CA012 /* CustomTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CustomTableViewCell.h; path = ../CustomTableViewCell.h; sourceTree = "<group>"; };
+		1AF8AD2E1BA85B1E007CA012 /* CustomTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CustomTableViewCell.m; path = ../CustomTableViewCell.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -89,6 +92,8 @@
 				1AF8AD0F1BA859B7007CA012 /* ViewController.m */,
 				1AF8AD111BA859B7007CA012 /* Main.storyboard */,
 				1AF8AD141BA859B7007CA012 /* Images.xcassets */,
+				1AF8AD2D1BA85B1E007CA012 /* CustomTableViewCell.h */,
+				1AF8AD2E1BA85B1E007CA012 /* CustomTableViewCell.m */,
 				1AF8AD161BA859B7007CA012 /* LaunchScreen.xib */,
 				1AF8AD0B1BA859B7007CA012 /* LetoApp.xcdatamodeld */,
 				1AF8AD041BA859B7007CA012 /* Supporting Files */,
@@ -225,6 +230,7 @@
 				1AF8AD0A1BA859B7007CA012 /* AppDelegate.m in Sources */,
 				1AF8AD071BA859B7007CA012 /* main.m in Sources */,
 				1AF8AD101BA859B7007CA012 /* ViewController.m in Sources */,
+				1AF8AD2F1BA85B1E007CA012 /* CustomTableViewCell.m in Sources */,
 				1AF8AD0D1BA859B7007CA012 /* LetoApp.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
