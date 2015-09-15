@@ -123,6 +123,8 @@ UIActivityIndicatorView *activity;
     NSSortDescriptor *sort=[NSSortDescriptor sortDescriptorWithKey:@"title" ascending:YES];
     [movies sortUsingDescriptors:[NSArray arrayWithObject:sort]];
     
+    [self.tableView reloadData];
+    
     
   //  NSLog(@"%@", movies);
     
@@ -140,6 +142,22 @@ UIActivityIndicatorView *activity;
     return 1;
 }
 
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    
+    
+    
+    
+    CustomTableViewCell *cell = [self.tableView dequeueReusableCellWithIdentifier:@"cell" forIndexPath:indexPath];
+    
+    
+    
+    cell.movieTitle.text = [[movies objectAtIndex:indexPath.row] objectForKey: @"title"];
+
+   cell.movieImage.image = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:[[movies objectAtIndex:indexPath.row] objectForKey:@"url"]]]];
+    
+    return cell;
+}
 
 
 - (void)didReceiveMemoryWarning {
