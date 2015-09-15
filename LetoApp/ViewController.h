@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ViewController : UIViewController <NSXMLParserDelegate, UITableViewDelegate>
+@interface ViewController : UIViewController <NSXMLParserDelegate, UITableViewDelegate, UIPickerViewDelegate, UIPickerViewDataSource>
 
 
 @end

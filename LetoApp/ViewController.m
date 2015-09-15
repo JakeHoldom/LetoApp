@@ -11,6 +11,10 @@
 
 @interface ViewController ()
 @property (strong, nonatomic) IBOutlet UITableView *tableView;
+@property (strong, nonatomic) IBOutlet UIButton *orderMovies;
+@property (strong, nonatomic) UIPickerView *orderByPicker;
+@property (strong, nonatomic) UITextField *pickerTextField;
+
 
 
 @end
@@ -21,15 +25,146 @@ NSString *currentElement;
 NSMutableString *movieTitle, *imgUrl;
 
 UIActivityIndicatorView *activity;
+NSArray *orderByArray;
+NSInteger selectedRow;
+
+BOOL ascending = YES;
+
 
 
 @implementation ViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+   
+
+    
+    [self initialisePickerView];
+    
+    
+
+
+    
+}
+
+- (void)initialisePickerView{
+    
+    
+    self.pickerTextField = [[UITextField alloc] initWithFrame:CGRectZero];
+    [self.view addSubview:self.pickerTextField];
+    
+    self.orderByPicker = [[UIPickerView alloc] initWithFrame:CGRectMake(0, 50, 100, 150)];
+    [self.orderByPicker setDataSource: self];
+    [self.orderByPicker setDelegate: self];
+    self.orderByPicker.showsSelectionIndicator = YES;
+    self.pickerTextField.inputView = self.orderByPicker;
+    orderByArray = [NSArray arrayWithObjects:@"Ascending",@"Descending",nil];
+    
+    UIToolbar *toolBar = [[UIToolbar alloc] initWithFrame:CGRectMake(0, 0, 320, 44)];
+    toolBar.barStyle = UIBarStyleBlackOpaque;
+    
+    UIBarButtonItem *doneButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(doneTouched:)];
+    UIBarButtonItem *cancelButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:self action:@selector(cancelTouched:)];
+    
+    // the middle button is to make the Done button align to right
+    [toolBar setItems:[NSArray arrayWithObjects:cancelButton, [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil], doneButton, nil]];
+    self.pickerTextField.inputAccessoryView = toolBar;
+    
+}
+- (IBAction)doneTouched:(id)sender{
+    
+    
+    
+
+
+
+    
+    if (selectedRow == 0) {
+        
+        
+            NSSortDescriptor *sort=[NSSortDescriptor sortDescriptorWithKey:@"title" ascending:YES];
+            [movies sortUsingDescriptors:[NSArray arrayWithObject:sort]];
+            
+            
+            
+            [self.tableView reloadData];
+        
+        self.orderMovies.titleLabel.text = @"Order Movies by: Asc";
+
+    
+        
+    }
+    if (selectedRow == 1) {
+        
+        
+        NSSortDescriptor *sort=[NSSortDescriptor sortDescriptorWithKey:@"title" ascending:NO];
+        [movies sortUsingDescriptors:[NSArray arrayWithObject:sort]];
+        
+        
+        
+        [self.tableView reloadData];
+        
+        self.orderMovies.titleLabel.text = @"Order Movies by: Desc";
+        
+    }
+
+  
+    [self.pickerTextField resignFirstResponder];
+
     
     
 }
+
+
+- (IBAction)cancelTouched:(id)sender{
+    
+    
+    
+    [self.pickerTextField resignFirstResponder];
+    
+    
+}
+
+- (IBAction)orderMovies:(id)sender {
+    
+    
+    [self.pickerTextField becomeFirstResponder];
+    
+    
+}
+- (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView
+{
+    return 1;
+}
+
+- (NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component
+{
+    return [orderByArray count];
+}
+
+- (NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component
+{
+    NSString *orderString = [orderByArray objectAtIndex:row];
+    
+    return orderString;
+}
+
+- (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component
+{
+    
+
+    selectedRow = row;
+
+
+}
+    
+   
+    
+  //  self.NoBedrooms.text = [bedroomPicker objectAtIndex:row];
+
+    
+    // perform some action
+
 
 -(void)viewDidAppear:(BOOL)animated{
     
@@ -123,6 +258,8 @@ UIActivityIndicatorView *activity;
     NSSortDescriptor *sort=[NSSortDescriptor sortDescriptorWithKey:@"title" ascending:YES];
     [movies sortUsingDescriptors:[NSArray arrayWithObject:sort]];
     
+    ascending = YES;
+    
     [self.tableView reloadData];
     
     
@@ -158,6 +295,7 @@ UIActivityIndicatorView *activity;
     
     return cell;
 }
+
 
 
 - (void)didReceiveMemoryWarning {
